@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id')->primary();
+            $table->string('title');
+            $table->enum('region',['west', 'east', 'north', 'central']);
+            $table->date('start_date');
+            $table->integer('duration_days');
+            $table->decimal('price_per_person');
         });
     }
 
