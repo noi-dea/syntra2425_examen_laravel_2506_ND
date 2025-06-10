@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id')->primary();
+            $table->uuid('trip_id')->nullable();
+            $table->foreign('trip_id')->references('id')->on('trips')->onDelete('set null');
+            $table->string('name');
+            $table->string('email');
+            $table->integer('number_of_people');
+            $table->enum('status',['pending', 'confirmed', 'cancelled'])->default('pending');
         });
     }
 
