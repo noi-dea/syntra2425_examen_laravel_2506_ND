@@ -13,54 +13,9 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $trips = Trip::all(['id', 'title', 'region', 'start_date', 'duration_days', 'price_per_person']);
+
+        return response()->json($trips,200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreTripRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Trip $trip)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Trip $trip)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateTripRequest $request, Trip $trip)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Trip $trip)
-    {
-        //
-    }
 }
