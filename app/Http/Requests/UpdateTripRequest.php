@@ -22,7 +22,11 @@ class UpdateTripRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'title' => 'sometimes|string',
+        'region' => 'sometimes|string|in:west,east,north,central',
+        'start_date' => 'sometimes|date',
+        'duration_days' => 'sometimes|integer|min:1',
+        'price_per_person' => 'sometimes|numeric|min:0.01'
         ];
     }
 }

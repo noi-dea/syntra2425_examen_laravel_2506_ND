@@ -22,7 +22,11 @@ class StoreBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'trip_id' => 'required|string',
+        'name' => 'required|string',
+        'email' => 'required|string',
+        'number_of_people' => 'required|integer|min:1',
+        'status' => 'required|string|in:pending,cancelled,confirmed'
         ];
     }
 }

@@ -22,7 +22,11 @@ class UpdateBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'trip_id' => 'sometimes|string',
+        'name' => 'sometimes|string',
+        'email' => 'sometimes|string',
+        'number_of_people' => 'sometimes|integer|min:1',
+        'status' => 'sometimes|string|in:pending,cancelled,confirmed'
         ];
     }
 }

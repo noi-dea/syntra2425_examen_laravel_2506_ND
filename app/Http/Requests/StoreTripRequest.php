@@ -22,7 +22,11 @@ class StoreTripRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'title' => 'required|string',
+        'region' => 'required|string|in:west,east,north,central',
+        'start_date' => 'required|date',
+        'duration_days' => 'required|integer|min:1',
+        'price_per_person' => 'required|numeric|min:0.01'
         ];
     }
 }
