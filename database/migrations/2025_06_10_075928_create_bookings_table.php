@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->timestamps();
             $table->uuid('trip_id')->nullable();
             $table->foreign('trip_id')->references('id')->on('trips')->onDelete('set null');
             $table->string('name');

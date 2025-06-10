@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->timestamps();
             $table->string('title');
             $table->enum('region',['west', 'east', 'north', 'central']);
             $table->date('start_date');
