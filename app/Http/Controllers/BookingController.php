@@ -8,59 +8,37 @@ use App\Models\Booking;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreBookingRequest $request)
     {
-        //
+        if(!$request->token){
+            return response()->json(['message'=>'Token missing'], 401);
+        }
+
+        if($request->token != md5($request->email . 'canadarocks')){
+            return response()->json(['message'=>'Invalid token'], 403);
+        }
+
+        $validated = $request->validated();
+
+        if (!$validated){
+            return response()->json(['message'=>'Invalid input'], 422);
+        }
+
+        $booking = Booking::create($validated);
+
+        return response()->json([
+            'trip_id' => $booking->trip_id,
+            'name' => $booking->name,
+            'email' => $booking->email,
+            'number_of_people' => $booking->number_of_people,
+            'token' => md5($booking->email . 'canadarocks')
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateBookingRequest $request, Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Booking $booking)
-    {
-        //
-    }
 }
