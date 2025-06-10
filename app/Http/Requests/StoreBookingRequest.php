@@ -22,7 +22,7 @@ class StoreBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'trip_id' => 'required|string',
+        'trip_id' => 'required|bigInteger',
         'name' => 'required|string',
         'email' => 'required|string',
         'number_of_people' => 'required|integer|min:1',

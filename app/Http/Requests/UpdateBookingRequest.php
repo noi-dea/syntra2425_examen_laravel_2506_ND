@@ -22,7 +22,7 @@ class UpdateBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'trip_id' => 'sometimes|string',
+        'trip_id' => 'sometimes|bigInteger',
         'name' => 'sometimes|string',
         'email' => 'sometimes|string',
         'number_of_people' => 'sometimes|integer|min:1',

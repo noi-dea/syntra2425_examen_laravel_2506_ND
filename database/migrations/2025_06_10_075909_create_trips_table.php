@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->timestamps();
             $table->string('title');
             $table->enum('region',['west', 'east', 'north', 'central']);
