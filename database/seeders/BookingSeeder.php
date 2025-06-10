@@ -110,7 +110,7 @@ class BookingSeeder extends Seeder
             'email' => 'Marc67@outlook.com',
             'number_of_people' => 3,
             'status' => 'confirmed'
-        ],,[
+        ],[
             'trip_id' => UuidRegistry::get('trip5'),
             'name' => 'Mikaela',
             'email' => 'Mika89@gmail.com',
@@ -134,7 +134,7 @@ class BookingSeeder extends Seeder
             'email' => 'Marc67@outlook.com',
             'number_of_people' => 5,
             'status' => 'confirmed'
-        ],,[
+        ],[
             'trip_id' => UuidRegistry::get('trip6'),
             'name' => 'Mikaela',
             'email' => 'Mika89@gmail.com',
@@ -158,7 +158,7 @@ class BookingSeeder extends Seeder
             'email' => 'Marc67@outlook.com',
             'number_of_people' => 3,
             'status' => 'confirmed'
-        ],];
+        ]];
 
         foreach($bookings as $booking){
             Booking::factory()->create($booking);
